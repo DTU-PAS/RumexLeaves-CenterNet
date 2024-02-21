@@ -1,7 +1,7 @@
 # RumexLeaves-CenterNet
 This repository contains the official implementation for
 
-[Zoom in on the Plant: Fine-grained Analysis of Leaf, Stem and Vein Instances. Ronja Güldenring, Rasmus Eckholdt Andersen and Lazaros Nalpantidis, IEEE Robotics and Automation Letters (RA-L), 2023]((https://ieeexplore.ieee.org/document/10373101))
+[Zoom in on the Plant: Fine-grained Analysis of Leaf, Stem and Vein Instances.](https://ieeexplore.ieee.org/document/10373101) Ronja Güldenring, Rasmus Eckholdt Andersen and Lazaros Nalpantidis, IEEE Robotics and Automation Letters (RA-L), 2023
 
 <p float="left">
   <img src="figures/architecture.png" width="700" />
