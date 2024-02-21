@@ -13,22 +13,93 @@ Robot perception is far from what humans are capable of. Humans do not only have
 
 __Sources__:
 * [RumexLeaves Website](https://dtu-pas.github.io/RumexLeaves/)
-* [Publication](ToDo)
+* [Publication](https://ieeexplore.ieee.org/document/10373101)
+* [Arxiv](https://arxiv.org/abs/2312.08805)
 * [Dataset](https://data.dtu.dk/articles/dataset/_strong_RumexLeaves_Dataset_introduced_by_Paper_Fine-grained_Leaf_Analysis_for_Efficient_Weeding_Robots_strong_/23659524)
 
-## Getting Started
-1. Download the dataset
-Download data
-```
-wget https://data.dtu.dk/ndownloader/files/41521812
-```
-2. Install pip requirements
-3. Download weights
-4. Run Inference 
+## Getting started locally
+1. Create environment and install pip requirements
+    ```
+    make create_environment
+    make requirements
+    ```
+2. Download & prepare data
+    ```
+    make data
+    ```
+3. Visualize example images with annotations
+    ```
+    conda run -n rumexleaves_centernet python rumexleaves_centernet/visualizations/visualize_data.py
+    ```
+4. Download model weights
+    ```
+    make download_weights
+    ```
+5. Run example inference
+    ```
+    conda run -n rumexleaves_centernet python rumexleaves_centernet/tools/inference.py --exp_file exp_files/eval_inat.py -ckpt models/final_model.pth -img data/processed/RumexLeaves/iNaturalist/4150.jpg
+    ```
+6. Run validation of final model on iNaturalist data
+    ```
+    conda run -n rumexleaves_centernet python rumexleaves_centernet/tools/evaluate.py --exp_file exp_files/eval_inat.py -ckpt models/final_model.pth
+    ```
+7. Training final model from scratch
+    ```
+    conda run -n rumexleaves_centernet python rumexleaves_centernet/tools/train.py --exp_file exp_files/train_final_model.py 
+    ```
 
-## Note
-The code will be released end of January 2024.
+## Getting started with Docker
+1. Download & prepare data
+    ```
+    make data
+    ```
+2. Get submodules
+    ```
+    git submodule update --init --recursive
+    ```
+3. Build docker image
+    ```
+    docker build -f dockerfiles/train_model.dockerfile . -t train_model:latest
+    ```
+4. Run training in docker container
+    ```
+    docker run --gpus all -v "$(pwd)/data/processed:/data/processed" -v "$(pwd)/log:/log" -v "$(pwd)/exp_files/train_final_model.py:/exp_file.py" -e WANDB_API_KEY=<your-api-key> --shm-size=500m train_model
+    ```
 
+
+## Project structure
+
+The directory structure of the project looks like this:
+
+```txt
+
+├── Makefile             <- Makefile with convenience commands like `make data`
+├── README.md            <- The top-level README for developers using this project.
+├── data
+│   ├── processed        <- The final, canonical data sets for modeling.
+│   └── raw              <- The original, immutable data dump.
+│
+├── exp_files            <- files to define the experiment configuration
+|
+├── models               <- checkpoint models
+│
+├── pyproject.toml       <- Project configuration file
+│
+├── requirements.txt     <- The requirements file for reproducing the analysis environment
+|
+├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
+│
+├── tests                <- Test files
+│
+├── rumexleaves_centernet  <- Source code for use in this project.
+│
+├── submodules          <- relevant submodules are stored here
+│
+└── LICENSE              <- MIT License
+```
+Created using [mlops_template](https://github.com/SkafteNicki/mlops_template),
+a [cookiecutter template](https://github.com/cookiecutter/cookiecutter) for getting
+started with Machine Learning Operations (MLOps).
 
 ## Citation
 
@@ -38,6 +109,16 @@ If you find this work useful in your research, please cite:
 author = {Güldenring, Ronja and Andersen, Rasmus Eckholdt and Nalpantidis, Lazaros},
 title = {Zoom in on the Plant: Fine-grained Analysis of Leaf, Stem and Vein Instances},
 journal = {IEEE Robotics and Automation Letters (RA-L)},
-year = {2023}
+year = {2024}
 }
 ```
+
+## References
+Our code is partially based on the following code bases.
+* [CenterNet](https://github.com/xingyizhou/CenterNet)
+* [YOLOX](https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX)
+* [Deformabel Convolutions v2 (pytorch)](https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2)
+
+
+
+

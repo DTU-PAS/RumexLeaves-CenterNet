@@ -1,0 +1,12 @@
+albumentations
+loguru
+opencv_python
+optuna
+pycocotools
+shapely
+tabulate
+tensorboard
+thop
+torch >= 2.2.0
+torchvision >= 0.17.0
+wandb

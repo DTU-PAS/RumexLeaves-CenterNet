@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rumexleaves_centernet"
+version = "0.0.1"
+description = "Official code for the paper \"Zoom in on the Plant: Fine-grained Analysis of Leaf, Stem and Vein Instances\""
+authors = [
+  { name = "Ronja G\u00fcldenring", email = "ronjag@dtu.dk" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools.packages]
+find = {}  
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = {file = ['requirements_dev.txt']}
+
+[tool.ruff]
+line-length = 120
