@@ -15,7 +15,7 @@ requires-python = ">=3.8"
 dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools.packages]
-find = {}  
+find = {}
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

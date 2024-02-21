@@ -21,7 +21,7 @@ class Exp(rumex_leaf_exp):
         self.head_complexity = {"hm": 1, "off": 1, "kp": 4, "obb": 4, "kphm": 1}
         self.up_dc = True
 
-        self.batch_size = 32 
+        self.batch_size = 32
         self.lr = 0.0005
         self.norm_target = True
         self.weight_decay = 5e-5

@@ -1,6 +1,6 @@
 # RumexLeaves-CenterNet
-This repository contains the official implementation for 
-    
+This repository contains the official implementation for
+
 Zoom in on the Plant: Fine-grained Analysis of Leaf, Stem and Vein Instances. Ronja Güldenring, Rasmus Eckholdt Andersen and Lazaros Nalpantidis, IEEE Robotics and Automation Letters (RA-L), 2023
 
 <p float="left">
@@ -45,7 +45,7 @@ __Sources__:
     ```
 7. Training final model from scratch
     ```
-    conda run -n rumexleaves_centernet python rumexleaves_centernet/tools/train.py --exp_file exp_files/train_final_model.py 
+    conda run -n rumexleaves_centernet python rumexleaves_centernet/tools/train.py --exp_file exp_files/train_final_model.py
     ```
 
 ## Getting started with Docker
@@ -118,7 +118,3 @@ Our code is partially based on the following code bases.
 * [CenterNet](https://github.com/xingyizhou/CenterNet)
 * [YOLOX](https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX)
 * [Deformabel Convolutions v2 (pytorch)](https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2)
-
-
-
-
